@@ -1,0 +1,3 @@
+# Ignore generated folders
+node_modules
+/dist

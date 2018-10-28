@@ -1,20 +1,11 @@
 {
   "name": "@wfp/assets",
-  "version": "0.0.57",
+  "version": "0.0.01",
   "description": "Icons for the WFP UI",
   "main": "dist",
   "private": false,
   "scripts": {
-    "ci-check": "yarn build && yarn format:diff && yarn test --runInBand",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "dev": "nodemon -e html,svg src/test-server.js",
-    "format": "prettier --write \"**/*.{scss,css,js,md,ts}\"",
-    "format:diff": "prettier --list-different \"**/*.{scss,css,js,md,ts}\"",
-    "prebuild": "gulp clean",
-    "precommit": "lint-staged",
-    "build": "gulp build && gulp copy && gulp build:data",
-    "test": "jest",
-    "semantic-release": "semantic-release"
+    "build": "webpack -p --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -50,5 +41,11 @@
     "printWidth": 80,
     "singleQuote": true,
     "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.4",
+    "imagemin-webpack-plugin": "^2.3.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
   }
 }

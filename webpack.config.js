@@ -1,4 +1,3 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
@@ -10,22 +9,20 @@ module.exports = {
 
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, './assets'),
-    publicPath: '/assets',
+    path: path.join(__dirname, './dist'),
+    publicPath: '/dist',
   },
 
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: './src/assets/',
+        from: './src/',
         to: '[path][name].[ext]',
       },
     ]),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
-    }),
-    new ExtractTextPlugin('email/[name].html'),
-    new ExtractTextPlugin('css/[name].css'),
+    })
   ],
 
   resolve: {
